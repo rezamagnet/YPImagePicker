@@ -134,13 +134,17 @@ public class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
                 switch session.status {
                 case .completed:
                     DispatchQueue.main.async {
-                        if let coverImage = self?.coverImageView.image,
-                            let asset = self?.inputVideo.asset {
+                        
+                        
+                        if let coverImage = self?.coverImageView.image {
+                            let asset = self?.inputVideo.asset
                             let resultVideo = YPMediaVideo(thumbnail: coverImage, videoURL: destinationURL, asset: asset)
                             didSave(YPMediaItem.video(v: resultVideo))
+                            
                             self?.setupRightBarButtonItem()
                         } else {
                             print("YPVideoFiltersVC -> Don't have coverImage or asset.")
+                            
                         }
                     }
                 case .failed:
